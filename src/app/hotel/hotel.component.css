@@ -1,0 +1,20 @@
+.block-hotels {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.box-search {
+    position: relative;
+}
+
+.div-search {
+    width: 80%;
+}
+
+.bouton-search {
+    position: absolute;
+    top: 0;
+    right: 0;
+}

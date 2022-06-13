@@ -1,0 +1,37 @@
+<h2 *ngIf="listes && listes.length > 0">{{title}}</h2>
+
+<div class="">
+
+    <div class="box-search">
+        <div class="div-search">
+            <input [(ngModel)]="filterSearch" type="text" class="form-control mr-sm-2" placeholder="Search"
+                aria-label="Search">
+        </div>
+        <button class="btn btn-outline-success my-2 my-sm-0 bouton-search" type="submit">Search</button>
+
+    </div>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Hotel</th>
+                <th scope="col">Description</th>
+                <th scope="col">Price</th>
+                <th scope="col">Rating</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor=" let liste of listeFilter">
+                <td>{{liste.hotelName}}</td>
+                <td>{{liste.description}}</td>
+                <td>{{liste.price | currency:'EUR':'symbol':'1.2-2':'fr' | lowercase}}</td>
+                <td>
+                    <app-start-rating [rating]="liste.rating" (starRatingClicked)="receiveRatingClick($event)">
+                    </app-start-rating>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <div class="alert alert-primary">RatingClicked :{{clickSendRating}}</div>
+</div>
