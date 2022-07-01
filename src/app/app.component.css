@@ -1,0 +1,5 @@
+.block-nav {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+}

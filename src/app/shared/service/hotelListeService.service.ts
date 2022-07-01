@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { listes } from "src/app/hotel/listes";
+import { listes } from "../listes";
 
 @Injectable({
     providedIn: 'root'

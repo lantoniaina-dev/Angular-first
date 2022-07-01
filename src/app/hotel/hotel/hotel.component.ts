@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { ClientService } from '../shared/service/client.service';
-import { hotelListeService } from '../shared/service/hotelListeService.service';
-import { IHotel } from '../shared/types/interfaces';
-import { listes } from './listes';
+import { ClientService } from '../../shared/service/client.service';
+import { hotelListeService } from '../../shared/service/hotelListeService.service';
+import { hotelHttpService } from '../../shared/service/hotelService';
+import { IHotel } from '../../shared/types/interfaces';
+import { listes } from '../../shared/listes';
 
 @Component({
   selector: 'app-hotel',
@@ -13,22 +14,37 @@ export class HotelComponent implements OnInit {
 
   private _hotelListeService;
   private _clientService;
-  constructor(private hotelListeService: hotelListeService, private clientService: ClientService) {
+  private _httpHotels;
+
+  constructor(private hotels: hotelHttpService, private hotelListeService: hotelListeService, private clientService: ClientService) {
     this._hotelListeService = hotelListeService;
     this._clientService = clientService;
+    this._httpHotels = hotels;
   }
 
   title = "Liste courses"
   listes: IHotel[] = listes
+  httpHotels: any[] = [];
+  public errorMsg: any;
   public listeFilter: IHotel[] = [];
   private _filterSearch = "mot";
   clickSendRating = 2;
 
   ngOnInit(): void {
-    this.listeFilter = this.listes;
+    // this.listeFilter = this.listes;
     // this.filterSearch = "mot"
     console.log("Hotels :", this._hotelListeService.getHotels());
-    this.getClient()
+    this.gethttpHotels()
+
+  }
+
+  async gethttpHotels() {
+    await this._httpHotels.getHotels().subscribe({
+      next: hotels => {
+        this.listeFilter = hotels
+      },
+      error: err => this.errorMsg = err
+    });
   }
 
   async getClient() {
@@ -43,7 +59,7 @@ export class HotelComponent implements OnInit {
   public set filterSearch(filter: string) {
     this._filterSearch = filter;
     this.listeFilter = this.filterSearch ? this.filterHotels(this.filterSearch) : this.listes;
-    //si filterSearch exist FilterHotel(filterSearch) else filterSearch = listes
+    //si changement setter filterSearch exist FilterHotel(filterSearch) else filterSearch = listes
   }
 
   private filterHotels(search: string): IHotel[] {

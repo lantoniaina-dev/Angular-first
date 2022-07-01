@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { hotelListeService } from '../shared/service/hotelListeService.service';
+import { hotelListeService } from '../../shared/service/hotelListeService.service';
 
 @Component({
   selector: 'app-start-rating',

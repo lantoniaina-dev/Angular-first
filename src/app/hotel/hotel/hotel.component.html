@@ -18,6 +18,7 @@
                 <th scope="col">Description</th>
                 <th scope="col">Price</th>
                 <th scope="col">Rating</th>
+                <th scope="col"> Action</th>
             </tr>
         </thead>
         <tbody>
@@ -29,6 +30,7 @@
                     <app-start-rating [rating]="liste.rating" (starRatingClicked)="receiveRatingClick($event)">
                     </app-start-rating>
                 </td>
+                <td> <button [routerLink]="['/hotels/', liste.hotelId ]" class="btn btn-dark">Detail</button> </td>
             </tr>
 
         </tbody>

@@ -1,0 +1,16 @@
+<div class="alert alert-dark">Detail Hotel</div>
+<p>ID : {{_id}}</p>
+<p>Name : {{MonHotel.hotelName}}</p>
+<p>Description : {{MonHotel.description}}</p>
+<p>Price : {{MonHotel.price}}</p>
+
+<p>
+    <app-start-rating [rating]="MonHotel.rating" (starRatingClicked)="receiveRatingClick($event)">
+    </app-start-rating>
+</p>
+
+<div class="card-footer">
+    <button class="btn btn-outline-info" (click)="backToList()">
+        retour a la liste
+    </button>
+</div>
