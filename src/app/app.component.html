@@ -1,13 +1,13 @@
-<nav class="navbar navbar-expand-lg bg-light">
-  <div class="collapse navbar-collapse " id="navbarNav">
-    <a class="navbar-brand" href="#">Navbar</a>
-    <a class="nav-link active" aria-current="page" [routerLink]="['/home']">Home</a>
-    <a class="nav-link" [routerLink]="['/hotels']" routerLinkActive="active">Listes</a>
-    <a class="nav-link" href="#" routerLinkActive="active">Pricing</a>
-    <a class="nav-link disabled" routerLinkActive="active">Disabled</a>
-  </div>
-</nav>
-
 <div class="container">
+  <nav class="navbar navbar-expand-lg bg-light">
+    <div class="collapse navbar-collapse " id="navbarNav">
+      <a class="navbar-brand" href="#">Navbar</a>
+      <a class="nav-link active" aria-current="page" [routerLink]="['/home']">Home</a>
+      <a class="nav-link" [routerLink]="['/hotels']" routerLinkActive="active">Listes</a>
+      <a class="nav-link" href="#" routerLinkActive="active">Pricing</a>
+      <a class="nav-link disabled" routerLinkActive="active">Disabled</a>
+    </div>
+  </nav>
+
   <router-outlet></router-outlet>
 </div>

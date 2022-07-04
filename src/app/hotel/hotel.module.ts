@@ -3,26 +3,27 @@ import { CommonModule } from '@angular/common';
 import { DetailComponent } from './detail/detail.component';
 import { HotelComponent } from './hotel/hotel.component';
 import { RouterModule } from '@angular/router';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from '../app-routing.module';
 import { SharedModule } from '../shared/shared.module';
+import { HotelEditComponent } from './hotel-edit/hotel-edit.component';
+import { HotelRoutingModule } from './hotel-routing.module';
 
 
 @NgModule({
   declarations: [
     DetailComponent,
     HotelComponent,
-    // StartRatingComponent,
+    HotelEditComponent,
   ],
   imports: [
     CommonModule,
     FormsModule,
-    // StartRatingComponent,
     AppRoutingModule,
-    RouterModule.forChild([
-
-    ]),
-    SharedModule
+    SharedModule,
+    HotelRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
   ]
 })
 export class HotelModule { }

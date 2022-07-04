@@ -30,7 +30,10 @@
                     <app-start-rating [rating]="liste.rating" (starRatingClicked)="receiveRatingClick($event)">
                     </app-start-rating>
                 </td>
-                <td> <button [routerLink]="['/hotels/', liste.hotelId ]" class="btn btn-dark">Detail</button> </td>
+                <td>
+                    <button [routerLink]="['/hotels/', liste.hotelId ]" class="btn btn-dark">Detail</button>
+                    <button [routerLink]="['/hotels', liste.hotelId ,'edit']" class="btn btn-primary">Edit</button>
+                </td>
             </tr>
 
         </tbody>

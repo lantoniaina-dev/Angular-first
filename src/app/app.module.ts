@@ -11,6 +11,7 @@ import localeFr from '@angular/common/locales/fr';
 registerLocaleData(localeFr, 'fr');
 import { DetailGuard } from './hotel/hotel/detail.guard';
 import { HotelModule } from './hotel/hotel.module';
+import { AppMyRoutingModule } from './app-my-routing.module';
 
 
 @NgModule({
@@ -21,14 +22,8 @@ import { HotelModule } from './hotel/hotel.module';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    RouterModule.forRoot([
-      { path: 'home', component: HotelComponent },
-      { path: '', redirectTo: 'home', pathMatch: 'full' },
-      { path: 'hotels/:id', component: DetailComponent, canActivate: [DetailGuard] },
-      { path: 'hotels', component: HotelComponent },
-      { path: '**', redirectTo: 'home', pathMatch: 'full' },
-    ]),
     HotelModule,
+    AppMyRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
