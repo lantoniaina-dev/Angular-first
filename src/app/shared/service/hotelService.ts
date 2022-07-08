@@ -1,7 +1,7 @@
 import { HttpClient, HttpErrorResponse } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { catchError, Observable, ObservableInput, throwError } from "rxjs";
-import { tap } from "rxjs/operators";
+import { catchError, Observable, ObservableInput, throwError, of } from "rxjs";
+import { tap, map } from "rxjs/operators";
 import { IHotel } from "../types/interfaces";
 
 @Injectable({
@@ -19,6 +19,26 @@ export class hotelHttpService {
             tap((hotels: IHotel[]) => console.log('hotelsHttp:', hotels)),
             catchError(this.handleError)
         )
+    }
+
+    public getHotelsById(id: number): Observable<IHotel> {
+        if (id == 0) {  //si l'utilisatuer entre un id 0 qui n'existe pas
+            return of(this.getDefaultHotel())
+        }
+        return this.getHotels().pipe(
+            map(hotels => hotels.find(hotel => hotel.hotelId == id))
+        )
+    }
+
+    private getDefaultHotel(): IHotel {
+        return {
+            hotelId: 0,
+            hotelName: null,
+            description: null,
+            rating: null,
+            imageUrl: null,
+            price: null
+        }
     }
 
     public getArticle(): Observable<any[]> {
